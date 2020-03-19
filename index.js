@@ -229,7 +229,7 @@
 		return false;
 	});
 
-	$("closeRecordBtn").on("click",function(){
+	$("#closeRecordBtn").on("click",function(){
 		$("#makeRecording").parent().removeClass("hidden");
 		$('#popupbox').addClass("hidden");
 		$('body').addClass('map-active');
