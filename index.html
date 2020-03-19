@@ -21,7 +21,7 @@
             <!-- Intro, before editting -->
             <div id="intro" class="content-box hidden">
                 <h2>CTracker | Heatmap - Record CoVID-19 Patient Travel</h2>
-                <p>This tool works by adding heat trail <b>wherever your mouse moves</b>. The recording <b>will not start</b> unless you <b>click on the mouse</b> at the <b>starting point</b>. Ideally zoom in all the way to 18 for marking precise locations of visit. Zoom out to 15 before marking paths taken for travel.</p>
+                <p>This tool works by adding heat trail <b>wherever your mouse moves</b>. The recording <b>will not start</b> unless you <b>click on the mouse</b> at the <b>starting point</b>. Ideally zoom in all the way to 17 for marking precise locations of visit. Zoom out to 14 before marking paths taken for travel.</p>
                 <p>To <b>stop the recording</b>, just <b>click</b> when you reach an <b>end position</b> on the map. If you want to undo a recording after it has been stopped, please use the additional controls available in the record menu at the bottom of the map. If recording is verified to be correct by yourself, submit it by selection the submit option in the record menu at the bottom. YOU WILL BE REQUIRED TO ENTER THE PATIENT ID AND TIMEFRANE OF PATIENTS PRESENSE AT THE RECORDED LOCATION WHILE SUBMITTING. PLEASE ENSURE NOT TO RECORD LONG TIMEFRAMES ON ONE GO.</p>
                 <p>KINDLY ENTER YOUR NAME BEFORE BEGINNING THE PROCESS FOR INTERNAL VERIFICATION.</p>
                 <p class="fallback"><b>NAME</b>: <input name="recorderName" type="text" id="recorderName"></input></p>
@@ -37,6 +37,17 @@
                     <p class="fallback"><b>End Date of Travel</b>:<input name="patientEndDate" type="date" id=patientEndDate></input></p>
                     <p class="fallback"><b>End Time of Travel</b>:<input name="patientEndTime" type="time" id=patientEndTime></input></p>
                     <p><button id="submitRecordBtn" >SUBMIT</button></p>
+            </div>
+
+            <!-- Shown in interim while processing is in progress -->
+            <div id="working" class="content-box hidden">
+                <h2>Processing data...</h2>
+                <div class="loading">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <p><span id="currentStatus">UPLOADING</span></p>
             </div>
 
             <!-- Content displayed once processing complete -->

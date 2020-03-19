@@ -3,7 +3,7 @@
 		heatOptions = {
 			tileOpacity: 1,
 			heatOpacity: 1,
-			radius: 25,
+			radius: 20,
 			blur: 15
 		};
 
@@ -65,18 +65,14 @@
 
 		reloadMap();
 	}
-
-	function delayed2(){
-		$(".pauseRecord").addClass("hidden");
-		$(".unpauseRecord").removeClass("hidden");
-	}
 	
 	function delayed1(){
 			map.on("click",function(event2){
 				if(toggleEdit){
 					map.off(event2);
 					toggleEdit = false;
-					setTimeout(delayed2(), 500);
+					$(".pauseRecord").addClass("hidden");
+					$(".unpauseRecord").removeClass("hidden");
 				}
 			});
 	}
@@ -92,7 +88,8 @@
 			{
 				map.off(event1);
 				toggleEdit = true;
-				setTimeout(delayed1(), 500);
+				draw = true;
+				setTimeout(delayed1(), 12000);
 			}
 		});
 	}
@@ -215,12 +212,16 @@
 		console.log(patientStart);
 		console.log(patientEnd);
 
+		$("#submit").addClass("hidden")
+		$("#working").removeClass("hidden");
+
 		$.post("backend/saveData.php",{"heatmap":JSON.stringify(minified), "recorder": recorder, "patientId": patientId, "patientStart": patientStart, "patientEnd": patientEnd}, function(data){
 			console.log(data);
+			data=JSON.parse(data);
 			$(".patientCnf").html(data["patientId"]);
-			$(".recorderCnf").html(data["recorder"]);
-			$(".recorderCnfId").html(data["id"]);
-			$("#submit").addClass("hidden");
+			$("#recorderCnf").html(data["recorder"]);
+			$("#recordCnfId").html(data["id"]);
+			$("#working").addClass("hidden");
 			$("#done").removeClass("hidden");
 		});
 
